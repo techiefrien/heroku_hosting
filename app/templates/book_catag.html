@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="section">
+    <h3>TOp {{heading}}</h3>
+
+    <div class="row">
+        {% for book in books %}
+        <A href="{% url 'view-book' book.id %}">
+        <div class="card">
+            <img src="{{book.bimg.url}}" alt="">
+            <div class="card-text">
+                <h5>{{book.bname}}</h5>
+                <div class="details">
+                   
+                    <div class="batch time">
+                        <i class="fa-regular fa-clock"></i> {{book.uploaded_at}}
+                    </div>
+                    
+                    <div class="batch">
+                        {{book.branch}} 
+                    </div>
+                </div>
+            </div>
+        </div>
+        </A>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

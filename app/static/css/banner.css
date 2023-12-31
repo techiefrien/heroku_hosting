@@ -1,0 +1,61 @@
+
+
+
+.banner-text{
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    transform: translateY(-20%);
+}
+
+.banner-text h1{
+    margin:5px 0;
+}
+
+.banner-text h3{
+    font-size: 18px;
+}
+
+.banner p{
+    font-size: 13px;
+}
+
+
+.banner button{
+    height: 40px;
+    width: 150px;
+    background-color: orange;
+    margin:15px 0;
+    color:white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+
+}
+
+@media screen and (max-width:768px) {
+    .banner-text h1 , h3 , p{
+        font-size: 20px;
+        text-align: center;
+    }
+
+
+    .banner-text{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top:50px;
+    
+    }
+
+    .banner button{
+        height: 30px;
+        width: 100px;
+        font-size: 15px;
+    }
+
+    .banner{
+        height: 350px;
+    }
+    
+}

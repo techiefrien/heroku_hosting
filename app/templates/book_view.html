@@ -1,0 +1,120 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load social_share %}
+{% block content %}
+
+<style>
+    .loadscreen{
+        position: fixed;
+        top:0;
+        left:0;
+        height: 100vh;
+        width: 100%;
+        background:rgba(0,0,0,0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none;
+    }
+
+    .loader{
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border:5px solid white;
+        border-top: none;
+        border-bottom: none;
+        animation: 1s linear load infinite;
+    }
+
+    @keyframes load {
+        from{
+            transform: rotate(0deg);
+        }
+        to{
+            transform: rotate(360deg);
+        }
+        
+    }
+
+    @media screen and (max-width:768px) {
+        .loader{
+            height: 75px;
+            width: 75px;
+        }
+    }
+
+    .loadscreen.active {
+        display: flex;
+    }
+</style>
+
+<section class="section" style="display: flex; align-items: center; justify-content: center;">
+    <div class="container">
+        <div class="img">
+            <img src="{{book.bimg.url}}" alt="">
+        </div>
+        <div class="book-details">
+            <h2>{{book.bname}}</h2>
+            <div class="discription">
+                <label for="">Description</label>
+                <p>{{book.disc}}</p>
+            </div>
+            <p class="author"><b>Author</b>: {{book.author}} </p>
+            <p class="branch"><b>Branch</b>: {{book.branch}} </p>
+            <div class="timestamp">
+                <p><b> <i class="fa-regular fa-clock"></i> {{book.uploaded_at}}</b> </p>
+                <p><b>Downloads({{book.download_count}})</b> </p>    
+            </div>
+            <div class="btn-group">
+                <a href="https://api.whatsapp.com/send?+254799043853=+*YOURNUMBER*&text=%20*{{ request.get_full_path|urlencode }}&title=<your title>&summary=<your desc>&source=http://devbrian.com*" class="youtube-link">
+                    <button class="share"><i class="fa-solid fa-share-from-square"></i> Share</button>
+                </a>
+                <button class="download" id="download"><i class="fa-solid fa-circle-down"></i> Download</button>
+
+                
+            </div>
+    </div>
+</section>
+<div class="loadscreen">
+    <div class="loader">
+    
+    </div>
+</div>
+
+
+<script src="{% static 'js/ajax.js' %}"></script>
+<script>
+    $('#download').click(function(e){
+        let pid = "{{book.id}}"
+        let csrfmiddlewaretoken = '{{csrf_token}}'
+        $('.loadscreen').addClass('active')
+
+        $.ajax({
+            url:"{% url 'download' %}" , 
+            method : 'POST' , 
+            xhrFields : {
+                responseType : 'blob'
+            } , 
+            data: {
+                "pid" : pid , 
+                'csrfmiddlewaretoken' : csrfmiddlewaretoken
+            } , 
+            success: function(res){
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(res)
+                console.log(link)
+                link.download = `{{book.bname}}` , 
+                document.body.appendChild(link)
+                link.click()
+                $('.loadscreen').removeClass('active')
+                console.log(res)
+
+            }
+            
+        })
+    })
+</script>
+
+
+{% endblock content %}

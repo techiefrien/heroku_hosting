@@ -1,0 +1,107 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .banner{
+    height: 450px;
+    width: 100%;
+    background: url("{% static 'images/banner3.jpeg' %}");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding:40px 70px;
+}
+</style>
+
+<div class="banner">
+    <div class="banner-text">
+        <h1>Get Ready For Exams</h1>
+        <h3>Download your class notes with single click</h3>
+        <p>High Quality Notes , Books , Syllabus Are Available Here . you can download <br> it as PDF or Image format </p>
+        <Button>Explore</Button>
+    </div>
+</div>
+
+<section class="section">
+    <h3>Top Books</h3>
+
+    <div class="row">
+        {% for book in books %}
+        <A href="{% url 'view-book' book.id %}">
+        <div class="card">
+            <img src="{{book.bimg.url}}" alt="">
+            <div class="card-text">
+                <h5>{{book.bname}}</h5>
+                <div class="details">
+                   
+                    <div class="batch time">
+                        <i class="fa-regular fa-clock"></i> {{book.uploaded_at}}
+                    </div>
+                    
+                    <div class="batch">
+                        {{book.branch}} 
+                    </div>
+                </div>
+            </div>
+        </div>
+        </A>
+        {% endfor %}
+    </div>
+</section>
+ <section class="section">
+    <h3>Top Notes</h3>
+    <div class="row">
+        {% for book in notes %}
+        <A href="{% url 'view-book' book.id %}">
+        <div class="card">
+            <img src="{{book.bimg.url}}" alt="">
+            <div class="card-text">
+                <h5>{{book.bname}}</h5>
+                <div class="details">
+                   
+                    <div class="batch time">
+                        <i class="fa-regular fa-clock"></i> {{book.uploaded_at}}
+                    </div>
+                    
+                    <div class="batch">
+                        {{book.branch}} 
+                    </div>
+                </div>
+            </div>
+        </div>
+        </A>
+        {% endfor %}
+    </div>
+  
+</section>
+<section class="section">
+    <h3>Top Syllabus</h3>
+   <div class="row">
+    {% for book in syllabus %}
+    <A href="{% url 'view-book' book.id %}">
+    <div class="card">
+        <img src="{{book.bimg.url}}" alt="">
+        <div class="card-text">
+            <h5>{{book.bname}}</h5>
+            <div class="details">
+               
+                <div class="batch time">
+                    <i class="fa-regular fa-clock"></i> {{book.uploaded_at}}
+                </div>
+                
+                <div class="batch">
+                    {{book.branch}} 
+                </div>
+            </div>
+        </div>
+    </div>
+    </A>
+    {% endfor %}
+   </div>
+    
+</section>
+{% endblock content %}

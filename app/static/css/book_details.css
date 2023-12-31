@@ -1,0 +1,119 @@
+.container{
+    margin:5px;
+    width:auto;
+    padding:25px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    box-shadow: 4px 4px 6px rgba(0,0,0,0.5);
+}
+
+.book-details{
+    margin:0 20px;
+}
+
+.book-details h2{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.discription{
+    margin:15px 0;
+}
+
+.discription label{
+    font-weight: bold;
+}
+
+.discription p{
+    text-align: justify;
+}
+
+p s{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+
+p{
+    margin-bottom: 10px;
+}
+
+.img img{
+    height: 300px;
+    width: 240px;
+}
+
+.btn-group{
+    width: 100%;
+    height: auto;
+}
+
+.btn-group button{
+    height: 40px;
+    color: white;
+    border-radius: 50px;
+    width: 150px;
+    border: none;
+    cursor: pointer;
+}
+
+.share{
+    background-color: orangered;
+}
+.download{
+    background-color: rgb(109, 209, 109);
+}
+
+.timestamp p{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+@media  screen and (max-width:768px) {
+    .container{
+        flex-direction: column;
+        padding:10px;
+    }
+
+    .img img{
+        height: 200px;
+        width: 150px;
+    }
+
+
+    .book-details h2{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .book-details p{
+        font-size: 12px;
+    }
+
+    .branch  , .author{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .timestamp{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .btn-group{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .btn-group button{
+        height: 30px;
+        width: 100px;
+    }
+
+    
+
+}

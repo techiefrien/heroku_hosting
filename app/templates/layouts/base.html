@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/navbars.css' %}">
+    <link rel="stylesheet" href="{% static  'css/banner.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" integrity="sha512-d0olNN35C6VLiulAobxYHZiXJmq+vl+BGIgAxQtD5+kqudro/xNMvv2yIHAciGHpExsIbKX3iLg+0B6d0k4+ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <title>Guidan | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" integrity="sha512-pZlKGs7nEqF4zoG0egeK167l6yovsuL8ap30d07kA5AJUq+WysFlQ02DLXAmN3n0+H3JVz5ni8SJZnrOaYXWBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/book_details.css' %}">
+
+ 
+</head>
+<body>
+
+    <div class="main-nav">
+        <div class="brand">
+            <h3>Guidan</h3>
+        </div>
+     
+        <ul id="nav-collapse">
+            <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="{% url 'books' %}"><i class="fa-solid fa-book"></i> Books</a></li>
+            <li><a href="{% url 'notes' %}"><i class="fa-solid fa-clipboard"></i> Notes</a></li>
+            <li><a href="{% url 'syllabus' %}"><i class="fa-solid fa-indent"></i> Syllabus</a></li>
+            <li><a href="#"><i class="fa-solid fa-file-circle-question"></i> Question paper</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Search ..">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <button id="nav-toggle"><i class="fa-solid fa-bars"></i></button>
+    </div>
+
+    <div class="sub-nav">
+        <h4>Top Readings</h4>
+        <ul>
+            <li><a href="#">C</a></li>
+            <li><a href="#">C++</a></li>
+            <li><a href="#">python</a></li>
+            <li><a href="#">Java</a></li>
+            <li><a href="#">Financial Accounting</a></li>
+            <li><a href="#">Bio Wepons</a></li>
+            <li><a href="#">Value Education</a></li>
+            <li><a href="#">Microproccessors</a></li>
+        </ul>
+    </div>
+   {% block content %}
+   {% endblock content %}
+    <footer>
+        Copyrights &copy Guidan | All Rights Reserved
+    </footer>
+
+    
+    <script>
+        let btn = document.getElementById('nav-toggle')
+        let nav = document.getElementById('nav-collapse')
+
+        btn.addEventListener('click' , function(e){
+            nav.classList.toggle('active')
+        })
+        
+       
+    </script>
+</body>
+</html>
